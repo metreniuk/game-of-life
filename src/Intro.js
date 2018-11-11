@@ -16,6 +16,7 @@ let Content = styled.div`
 let Heading = styled.h2`
   font-size: 122px;
   margin: 0;
+  line-height: 1;
 `
 
 let Game = styled(Heading)`
@@ -31,7 +32,7 @@ let Life = styled(Heading)`
 `
 
 let Button = styled.a`
-  margin-top: 120px;
+  margin-top: 80px;
   align-self: center;
   width: 200px;
   font-size: 32px;

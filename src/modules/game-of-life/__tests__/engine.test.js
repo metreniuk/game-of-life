@@ -4,7 +4,7 @@ let {
   neighborsSum,
   cellNextState,
   worldNextState,
-} = require("../index")
+} = require("../engine")
 
 describe("makeWorld", () => {
   test("generates a bi-dimensional array filled with zeroes", () => {

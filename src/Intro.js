@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { CanvasWorld } from "./CanvasWorld"
 
 let Wrapper = styled.div`
   width: 100%;
@@ -47,6 +48,7 @@ let Arrow = styled.span`
 
 let Intro = () => (
   <Wrapper>
+    <CanvasWorld />
     <Content>
       <Game>Game</Game>
       <Of>of</Of>

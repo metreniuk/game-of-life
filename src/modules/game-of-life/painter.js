@@ -1,23 +1,19 @@
 import { worldNextState } from "./engine"
 
+let animationId
+
 function makePainter(canvas) {
   let ctx = canvas.getContext("2d"),
     gap = 0,
-    cellSize,
-    animationId
+    cellSize
 
   return {
     paint,
   }
 
-  function paint(world, frequency = 1000) {
+  function paint(world, size, frequency = 1000) {
     if (!cellSize) {
-      let { innerWidth } = window
-
-      // cellSize = Math.round(innerWidth / world.length)
-      cellSize = (innerWidth / world.length).toFixed(1)
-
-      console.log({ cellSize, innerWidth, length: world.length })
+      cellSize = size
     }
 
     drawWorld(world)
@@ -26,7 +22,7 @@ function makePainter(canvas) {
 
     setTimeout(() => {
       animationId = window.requestAnimationFrame(() =>
-        paint(nextWorld, frequency)
+        paint(nextWorld, cellSize, frequency)
       )
     }, frequency)
 
@@ -37,8 +33,8 @@ function makePainter(canvas) {
   }
 
   function drawWorld(world) {
-    world.forEach((row, j) => {
-      row.forEach((cell, i) => {
+    world.forEach((row, i) => {
+      row.forEach((cell, j) => {
         let x = i * cellSize + gap
         let y = j * cellSize + gap
         if (cell) {

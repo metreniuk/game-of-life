@@ -7,12 +7,32 @@ let Wrapper = styled.div`
   flex-wrap: wrap;
 `
 
-export const Grid = () => (
+// const Row = ({ x, onClick }) => (
+//   <div>
+//     {Array(8)
+//       .fill()
+//       .map((_, i) => (
+//         <Cell key={i} x={x} y={i} onClick={() => onClick({ x, y: i })} />
+//       ))}
+//   </div>
+// )
+
+let noop = () => {}
+
+export const Grid = ({ world, onClick = noop }) => (
   <Wrapper>
-    {Array(10)
-      .fill()
-      .map((_, i) => (
-        <Cell key={i} />
-      ))}
+    {world.map((row, x) => (
+      <div key={x}>
+        {row.map((alive, y) => (
+          <Cell
+            alive={alive}
+            key={y}
+            x={x}
+            y={y}
+            onClick={() => onClick({ x, y })}
+          />
+        ))}
+      </div>
+    ))}
   </Wrapper>
 )

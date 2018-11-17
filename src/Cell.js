@@ -14,8 +14,8 @@ import styled from "styled-components"
 let Box = styled.div`
   border: 1px #006ec8 solid;
   fill: #006ec8;
-  height: 24px;
-  width: 24px;
+  height: 32px;
+  width: 32px;
   margin-right: 5px;
   margin-bottom: 5px;
   cursor: pointer;
@@ -24,8 +24,12 @@ let Box = styled.div`
   background: ${props => (props.alive ? "#006ec8" : "#fff")};
 `
 
-export let Cell = () => {
-  return (
-    <Toggle>{({ on, toggle }) => <Box alive={on} onClick={toggle} />}</Toggle>
-  )
-}
+// export let Cell = () => {
+//   return (
+//     <Toggle>{({ on, toggle }) => <Box alive={on} onClick={toggle} />}</Toggle>
+//   )
+// }
+
+export let Cell = ({ alive, onClick }) => (
+  <Box alive={alive} onClick={onClick} />
+)

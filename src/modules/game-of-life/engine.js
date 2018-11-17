@@ -1,6 +1,7 @@
 let makeWorld = (n, m) => new Array(n).fill(new Array(m).fill(0))
 
-let mapWorld = (fn, world) => world.map((row, x) => row.map((_, y) => fn(x, y)))
+let mapWorld = (fn, world) =>
+  world.map((row, x) => row.map((_, y) => fn(x, y, world[x][y])))
 
 let makeRandomWorld = (n, m) =>
   mapWorld(() => (Math.random() > 0.5 ? 1 : 0), makeWorld(n, m))
@@ -43,6 +44,7 @@ let worldNextState = (world, margins = [-1, world.length]) =>
 export {
   makeWorld,
   makeRandomWorld,
+  mapWorld,
   neighborsSum,
   cellNextState,
   worldNextState,

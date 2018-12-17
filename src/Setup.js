@@ -6,11 +6,6 @@ injectGlobal`
 	  font-family: 'Xkcd';
 	  src: url('./xkcd.otf');
   }
-  
-  * {
-    font-family: sans-serif;
-    color: #006ec8;
-  }
 
   *:focus{
     outline: none;

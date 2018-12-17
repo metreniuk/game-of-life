@@ -1,5 +1,4 @@
 import React from "react"
-import { Toggle } from "react-powerplug"
 import styled from "styled-components"
 
 // export const Cell = () => (
@@ -30,6 +29,6 @@ let Box = styled.div`
 //   )
 // }
 
-export let Cell = ({ alive, onClick }) => (
-  <Box alive={alive} onClick={onClick} />
-)
+export let Cell = ({ alive, onClick }) => {
+  return <Box alive={alive} onClick={onClick} />
+}

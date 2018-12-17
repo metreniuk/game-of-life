@@ -24,13 +24,7 @@ export const Grid = ({ world, onClick = noop }) => (
     {world.map((row, x) => (
       <div key={x}>
         {row.map((alive, y) => (
-          <Cell
-            alive={alive}
-            key={y}
-            x={x}
-            y={y}
-            onClick={() => onClick({ x, y })}
-          />
+          <Cell alive={alive} key={y} onClick={() => onClick({ x, y })} />
         ))}
       </div>
     ))}

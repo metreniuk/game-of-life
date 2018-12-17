@@ -3,6 +3,11 @@ import styled from "styled-components"
 import { makePainter, makeRandomWorld } from "./modules/game-of-life"
 import throttle from "lodash.throttle"
 
+let Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`
+
 let Canvas = styled.canvas`
   position: absolute;
   top: 0;

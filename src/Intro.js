@@ -48,7 +48,7 @@ let Arrow = styled.span`
 `
 
 let Intro = () => (
-  <Wrapper>
+  <React.Fragment>
     <CanvasWorld />
     <Content>
       <Game>Game</Game>
@@ -58,7 +58,7 @@ let Intro = () => (
         Play <Arrow>-></Arrow>
       </Button>
     </Content>
-  </Wrapper>
+  </React.Fragment>
 )
 
 export default Intro

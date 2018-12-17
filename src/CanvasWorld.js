@@ -1,22 +1,30 @@
 import React, { Component, createRef } from "react"
+import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { makePainter, makeRandomWorld } from "./modules/game-of-life"
 import throttle from "lodash.throttle"
 
-let Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`
-
 let Canvas = styled.canvas`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
   opacity: 0.1;
 `
+
+class Modal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.el = document.createElement("div")
+    document.getElementById("root").appendChild(this.el)
+  }
+
+  render() {
+    return createPortal(this.props.children, this.el)
+  }
+}
+
 // TODO clear animation on resize
 class CanvasWorld extends Component {
   constructor() {
@@ -27,18 +35,18 @@ class CanvasWorld extends Component {
     this.height = window.innerHeight
     this.stopTimer = null
     this.paint = throttle(this.paint.bind(this), 2000)
-    this.handleResize = this.handleResize.bind(this)
+    // this.handleResize = this.handleResize.bind(this)
   }
 
   componentDidMount() {
     this.paint()
 
-    window.addEventListener("resize", this.handleResize)
+    // window.addEventListener("resize", this.handleResize)
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize)
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.handleResize)
+  // }
 
   paint() {
     if (this.canvas.current) {
@@ -53,17 +61,23 @@ class CanvasWorld extends Component {
     }
   }
 
-  handleResize() {
-    if (this.stopTimer) {
-      this.stopTimer()
-    }
+  // handleResize() {
+  //   if (this.stopTimer) {
+  //     this.stopTimer()
+  //   }
 
-    this.paint()
-  }
+  //   this.paint()
+  // }
 
   render() {
     return (
-      <Canvas innerRef={this.canvas} width={this.width} height={this.height} />
+      <Modal>
+        <Canvas
+          innerRef={this.canvas}
+          width={this.width}
+          height={this.height}
+        />
+      </Modal>
     )
   }
 }

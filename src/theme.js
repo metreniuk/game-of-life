@@ -3,7 +3,7 @@ import theme from "mdx-deck/themes"
 export default {
   ...theme,
   font: "Helvetica, sans-serif",
-  fontSizes: ["16px", "16px", "24px"],
+  fontSizes: ["16px", "16px", "32px"],
   colors: {
     ...theme.colors,
     text: "#006ec8",

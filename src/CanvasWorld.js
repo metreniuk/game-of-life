@@ -26,6 +26,7 @@ class Modal extends React.Component {
 }
 
 // TODO clear animation on resize
+// TODO Move the scripting to a web worker???
 class CanvasWorld extends Component {
   constructor() {
     super()

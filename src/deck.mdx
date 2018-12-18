@@ -43,10 +43,22 @@ were interested in, they discovered a whole new field in mathematics called **ce
 
 ---
 import {Cell} from './Cell'
+import {HorizontalCenter} from "./wrappers"
 
-<Cell alive />
-  -> 
-<Cell />
+Cellular automata is basically a grid of "cells" that can be 
+in different states, for example, _on_ or _off_. 
+Let say that if a cell is _on_
+we will consider it **alive**.
+
+<HorizontalCenter>
+  <Cell alive size={60} />
+</HorizontalCenter>
+
+If a cell is _off_ we will consider it **dead**.
+
+<HorizontalCenter>
+  <Cell size={60} />
+</HorizontalCenter>
 ---
 
 import {Table} from './Table'

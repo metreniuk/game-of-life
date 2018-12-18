@@ -2,8 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 let Box = styled.div`
-  height: 32px;
-  width: 32px;
+  height: ${props => (props.size || 32) + "px"};
+  width: ${props => (props.size || 32) + "px"};
   cursor: pointer;
   background: ${props => (props.alive ? "#006ec8" : "#fff")};
   fill: ${props => (props.alive ? "#fff" : "#006ec8")};
@@ -13,9 +13,9 @@ let Box = styled.div`
   font-family: "sans serif";
 `
 // TODO make animation when the cell disappears
-export let Cell = ({ alive, onClick }) => {
+export let Cell = ({ alive, size, onClick }) => {
   return (
-    <Box alive={alive} onClick={onClick}>
+    <Box alive={alive} size={size} onClick={onClick}>
       {alive ? <LivingSvg /> : <DeadSvg />}
     </Box>
   )

@@ -12,3 +12,8 @@ export let CanvasWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export let HorizontalCenter = styled.div`
+  display: flex;
+  justify-content: center;
+`

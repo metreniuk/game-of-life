@@ -1,14 +1,12 @@
-import React from "react"
 import { injectGlobal } from "styled-components"
 
 injectGlobal`
-	@font-face {
-	  font-family: 'Xkcd';
-	  src: url('./xkcd.otf');
-  }
-
   *:focus{
     outline: none;
+  }
+
+  a:visited {
+    color: #006ec8;
   }
 
   /* slides navigator from the bottom */ 

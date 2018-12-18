@@ -2,14 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import { CanvasWorld } from "./CanvasWorld"
 
-let Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-`
-
 let Content = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 500px;
 `
 
@@ -19,17 +15,11 @@ let Heading = styled.h2`
   line-height: 1;
 `
 
-let Game = styled(Heading)`
-  align-self: flex-start;
-`
+let Game = styled(Heading)``
 
-let Of = styled(Heading)`
-  align-self: center;
-`
+let Of = styled(Heading)``
 
-let Life = styled(Heading)`
-  align-self: flex-end;
-`
+let Life = styled(Heading)``
 
 let Button = styled.a`
   margin-top: 80px;
@@ -42,9 +32,9 @@ let Button = styled.a`
   text-decoration: none;
 `
 
-let Arrow = styled.span`
-  position: relative;
-  top: 3px;
+let Caption = styled.p`
+  font-size: 24px;
+  margin-top: 60px;
 `
 
 let Intro = () => (
@@ -54,9 +44,8 @@ let Intro = () => (
       <Game>Game</Game>
       <Of>of</Of>
       <Life>Life</Life>
-      <Button href="/#1">
-        Play <Arrow>-></Arrow>
-      </Button>
+      {/* <Button href="/#1">Play</Button> */}
+      <Caption>(use left/right arrows to navigate)</Caption>
     </Content>
   </React.Fragment>
 )

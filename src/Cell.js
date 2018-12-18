@@ -5,10 +5,12 @@ let Box = styled.div`
   height: 32px;
   width: 32px;
   cursor: pointer;
-
   background: ${props => (props.alive ? "#006ec8" : "#fff")};
   fill: ${props => (props.alive ? "#fff" : "#006ec8")};
   border: 1px solid #006ec8;
+
+  /* hack for centering the inner svg */
+  font-family: "sans serif";
 `
 // TODO make animation when the cell disappears
 export let Cell = ({ alive, onClick }) => {

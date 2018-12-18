@@ -1,32 +1,41 @@
 import React from "react"
 import styled from "styled-components"
 import { Cell } from "./Cell"
+import { worldNextState } from "./modules/game-of-life"
 
 let Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
 
-// const Row = ({ x, onClick }) => (
-//   <div>
-//     {Array(8)
-//       .fill()
-//       .map((_, i) => (
-//         <Cell key={i} x={x} y={i} onClick={() => onClick({ x, y: i })} />
-//       ))}
-//   </div>
-// )
-
 let noop = () => {}
 
-export const Grid = ({ world, onClick = noop }) => (
-  <Wrapper>
-    {world.map((row, x) => (
-      <div key={x}>
-        {row.map((alive, y) => (
-          <Cell alive={alive} key={y} onClick={() => onClick({ x, y })} />
+export class Grid extends React.Component {
+  state = { showNext: false }
+
+  render() {
+    const { world, size, onClick = noop } = this.props
+
+    const currentWorld = this.state.showNext ? worldNextState(world) : world
+
+    return (
+      <Wrapper
+        onMouseEnter={() => this.setState({ showNext: true })}
+        onMouseLeave={() => this.setState({ showNext: false })}
+      >
+        {currentWorld.map((row, x) => (
+          <div key={x}>
+            {row.map((alive, y) => (
+              <Cell
+                alive={alive}
+                key={y}
+                size={size}
+                onClick={() => onClick({ x, y })}
+              />
+            ))}
+          </div>
         ))}
-      </div>
-    ))}
-  </Wrapper>
-)
+      </Wrapper>
+    )
+  }
+}

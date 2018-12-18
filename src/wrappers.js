@@ -15,5 +15,5 @@ export let CanvasWrapper = styled.div`
 
 export let HorizontalCenter = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: ${props => props.justify || "center"};
 `

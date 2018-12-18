@@ -58,7 +58,7 @@ class CanvasWorld extends Component {
       let world = makeRandomWorld(width, height)
 
       const { paint } = makePainter(this.canvas.current)
-      this.stopTimer = paint(world, cellSize, 200)
+      this.stopTimer = paint(world, cellSize, 500)
     }
   }
 

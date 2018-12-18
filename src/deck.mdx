@@ -45,7 +45,7 @@ were interested in, they discovered a whole new field in mathematics called **ce
 import {Cell} from './Cell'
 import {HorizontalCenter} from "./wrappers"
 
-Cellular automata is basically a grid of "cells" that can be 
+**Cellular automata** is basically a grid of _cells_ that can be 
 in different states, for example, _on_ or _off_. 
 Let say that if a cell is _on_
 we will consider it **alive**.
@@ -58,6 +58,65 @@ If a cell is _off_ we will consider it **dead**.
 
 <HorizontalCenter>
   <Cell size={60} />
+</HorizontalCenter>
+---
+
+Inspired by this idea, in 1968 John Conway began to experiment with defining some rules for cellular automata that should meet the following criteria:
+
+1. There should be no explosive growth. The grid should not be filled very quickly (we will get in a moment _why_).
+1. There should exist small initial patterns with chaotic, unpredictable outcomes.
+1. There should be potential for von Neumann universal constructors (the machine that can create itself).
+1. The rules should be as simple as possible, whilst adhering to the above constraints. 
+
+---
+import {Grid} from './Grid'
+
+Let's discover what rules Conway formalized trying to create the life from scratch.
+But first, we will define some concepts that will help us move forward. 
+You are already familiar with the **cell** and its two states: **alive** and **dead**.
+
+<HorizontalCenter>
+  <Grid size={50} world={[
+    [1, 0, 1],
+    [0, 1, 0],
+    [1, 0, 1],
+    ]} 
+  />
+</HorizontalCenter>
+
+Since we have a two-dimensional grid each **cell** have **neighbors**. 
+Each **neighbor** can also be **alive** or **dead**.
+
+---
+
+John Conway came up with the following rules.
+
+1. Any living cell with fewer than two live neighbors **dies**, as if by **underpopulation**.
+
+<HorizontalCenter >
+  <div>
+    <Grid size={60} world={[
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
+</HorizontalCenter>
+
+2. Any living cell with two or three alive neighbors **lives** on to the next generation.
+
+<HorizontalCenter>
+  <div>
+    <Grid size={60} world={[
+      [0, 0, 1],
+      [0, 1, 0],
+      [1, 0, 0],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
 </HorizontalCenter>
 ---
 

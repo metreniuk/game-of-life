@@ -49,10 +49,11 @@ class Table extends Component {
 
   render() {
     const { world } = this.state
+    const { cellSize } = this.props
 
     return (
       <div>
-        <Grid world={world} onClick={this.handleCellClick} />
+        <Grid world={world} size={cellSize} onClick={this.handleCellClick} />
         <button onClick={this.nextGeneration}>next generation</button>
         <button onClick={this.play}>play</button>
         <button onClick={this.reset}>reset</button>

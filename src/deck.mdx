@@ -48,7 +48,7 @@ import {HorizontalCenter} from "./wrappers"
 **Cellular automata** is basically a grid of _cells_ that can be 
 in different states, for example, _on_ or _off_. 
 Let say that if a cell is _on_
-we will consider it **alive**.
+we will consider it a **live** cell.
 
 <HorizontalCenter>
   <Cell alive size={60} />
@@ -73,7 +73,7 @@ import {Grid} from './Grid'
 
 Let's discover what rules Conway formalized trying to create the life from scratch.
 But first, we will define some concepts that will help us move forward. 
-You are already familiar with the **cell** and its two states: **alive** and **dead**.
+You are already familiar with the **cell** and its two states: **live** and **dead**.
 
 <HorizontalCenter>
   <Grid size={50} world={[
@@ -84,18 +84,18 @@ You are already familiar with the **cell** and its two states: **alive** and **d
   />
 </HorizontalCenter>
 
-Since we have a two-dimensional grid each **cell** have **neighbors**. 
-Each **neighbor** can also be **alive** or **dead**.
+Since we have a two-dimensional grid each **cell** has **neighbors**. 
+Each **neighbor** can also be **live** or **dead**.
 
 ---
 
 John Conway came up with the following rules.
 
-1. Any living cell with fewer than two live neighbors **dies**, as if by **underpopulation**.
+1. Any live cell with fewer than two live neighbors **dies**, as if by _underpopulation_.
 
-<HorizontalCenter >
+<HorizontalCenter justify="space-around">
   <div>
-    <Grid size={60} world={[
+    <Grid size={60} specialCells={[[1, 1]]} world={[
       [0, 0, 0],
       [0, 1, 0],
       [0, 0, 0],
@@ -103,13 +103,22 @@ John Conway came up with the following rules.
     />
     <p style={{fontSize: 14}}>(^^ hover ^^)</p>
   </div>
+  <div>
+    <Grid size={60} specialCells={[[0, 0], [2, 2]]} world={[
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
 </HorizontalCenter>
 
-2. Any living cell with two or three alive neighbors **lives** on to the next generation.
+2. Any live cell with two or three live neighbors **lives** on to the next generation.
 
-<HorizontalCenter>
+<HorizontalCenter justify="space-around">
   <div>
-    <Grid size={60} world={[
+    <Grid size={60} specialCells={[[1, 1]]} world={[
       [0, 0, 1],
       [0, 1, 0],
       [1, 0, 0],
@@ -117,7 +126,65 @@ John Conway came up with the following rules.
     />
     <p style={{fontSize: 14}}>(^^ hover ^^)</p>
   </div>
+  <div>
+    <Grid size={60} specialCells={[[1, 1]]} world={[
+      [1, 0, 0],
+      [0, 1, 0],
+      [1, 0, 1],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
 </HorizontalCenter>
+
+---
+
+3. Any live cell with more than three live neighbors **dies**, as if by _overpopulation_.
+
+<HorizontalCenter justify="space-around">
+  <div>
+    <Grid size={60} specialCells={[[1, 1]]} world={[
+      [1, 1, 0],
+      [0, 1, 0],
+      [1, 0, 1],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
+  <div>
+    <Grid size={60} specialCells={[[1, 0], [1, 1]]} world={[
+      [1, 1, 0],
+      [1, 1, 0],
+      [1, 1, 0],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
+</HorizontalCenter>
+
+4. Any dead cell with exactly three live neighbors becomes a **live** cell, as if by _reproduction_.
+
+<HorizontalCenter justify="space-around">
+  <div>
+    <Grid size={60} specialCells={[[1, 1]]} world={[
+      [0, 1, 0],
+      [0, 0, 1],
+      [0, 0, 1],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
+  <div>
+    <Grid size={60} specialCells={[[0, 1], [1, 0], [1, 2], [2, 1]]} world={[
+      [1, 0, 1],
+      [0, 1, 0],
+      [1, 0, 1],
+      ]}
+    />
+    <p style={{fontSize: 14}}>(^^ hover ^^)</p>
+  </div>
+</HorizontalCenter>
+
 ---
 
 import {Table} from './Table'

@@ -14,7 +14,7 @@ export class Grid extends React.Component {
   state = { showNext: false }
 
   render() {
-    const { world, size, onClick = noop } = this.props
+    const { world, size, specialCells = [], onClick = noop } = this.props
 
     const currentWorld = this.state.showNext ? worldNextState(world) : world
 
@@ -25,14 +25,21 @@ export class Grid extends React.Component {
       >
         {currentWorld.map((row, x) => (
           <div key={x}>
-            {row.map((alive, y) => (
-              <Cell
-                alive={alive}
-                key={y}
-                size={size}
-                onClick={() => onClick({ x, y })}
-              />
-            ))}
+            {row.map((alive, y) => {
+              const special = specialCells.some(
+                specialCell => x === specialCell[0] && y === specialCell[1]
+              )
+
+              return (
+                <Cell
+                  alive={alive}
+                  key={y}
+                  size={size}
+                  special={special}
+                  onClick={() => onClick({ x, y })}
+                />
+              )
+            })}
           </div>
         ))}
       </Wrapper>

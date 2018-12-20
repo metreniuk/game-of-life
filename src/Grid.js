@@ -10,6 +10,20 @@ let Wrapper = styled.div`
 
 let noop = () => {}
 
+export class NextWorld extends React.Component {
+  state = { showNext: false }
+
+  render() {
+    const { world, children } = this.props
+
+    return children({
+      world: this.state.showNext ? worldNextState(world) : world,
+      onMouseEnter: () => this.setState({ showNext: true }),
+      onMouseLeave: () => this.setState({ showNext: false }),
+    })
+  }
+}
+
 export class Grid extends React.Component {
   state = { showNext: false }
 
@@ -20,16 +34,12 @@ export class Grid extends React.Component {
       specialCells = [],
       willDie = false,
       onClick = noop,
+      ...rest
     } = this.props
 
-    const currentWorld = this.state.showNext ? worldNextState(world) : world
-
     return (
-      <Wrapper
-        onMouseEnter={() => this.setState({ showNext: true })}
-        onMouseLeave={() => this.setState({ showNext: false })}
-      >
-        {currentWorld.map((row, x) => (
+      <Wrapper {...rest}>
+        {world.map((row, x) => (
           <div key={x}>
             {row.map((alive, y) => {
               const special = specialCells.some(

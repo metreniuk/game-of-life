@@ -45,7 +45,7 @@ were interested in, they discovered a whole new field in mathematics called **ce
 ---
 
 import { Cell } from "./Cell"
-import { HorizontalCenter } from "./wrappers"
+import { HorizontalCenter, Finger } from "./wrappers"
 
 **Cellular automata** is basically a grid of _cells_ that can be
 in different states, for example, _on_ or _off_.
@@ -72,14 +72,17 @@ Inspired by this idea, in 1968 John Conway began to experiment with defining som
 
 ---
 
-import { Grid } from "./Grid"
+import { Grid, NextWorld } from "./Grid"
 
 Let's discover what rules Conway formalized trying to create the life from scratch.
 But first, we will define some concepts that will help us move forward.
 You are already familiar with the **cell** and its two states: **live** and **dead**.
 
-<HorizontalCenter>
-  <Grid size={50} world={[[1, 0, 1], [0, 1, 0], [1, 0, 1]]} />
+<HorizontalCenter style={{ flexDirection: "column", alignItems: "center" }}>
+  <NextWorld world={[[1, 0, 1], [0, 1, 0], [1, 0, 1]]}>
+    {({ ...worldAndHandlers }) => <Grid size={50} {...worldAndHandlers} />}
+  </NextWorld>
+  <Finger>👆</Finger>
 </HorizontalCenter>
 
 Since we have a two-dimensional grid each **cell** has **neighbors**.
@@ -93,22 +96,21 @@ John Conway came up with the following rules.
 
 <HorizontalCenter justify="space-around">
   <div>
-    <Grid
-      size={60}
-      specialCells={[[1, 1]]}
-      willDie
-      world={[[0, 0, 0], [0, 1, 0], [0, 0, 0]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[0, 0, 0], [0, 1, 0], [0, 0, 0]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid size={60} specialCells={[[1, 1]]} willDie {...worldAndHandlers} />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
   </div>
   <div>
-    <Grid
-      size={60}
-      specialCells={[[0, 0], [2, 2]]}
-      willDie
-      world={[[1, 0, 0], [0, 1, 0], [0, 0, 1]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[1, 0, 0], [0, 1, 0], [0, 0, 1]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid size={60} specialCells={[[0, 0], [2, 2]]} willDie {...worldAndHandlers} />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
+
   </div>
 </HorizontalCenter>
 
@@ -116,21 +118,21 @@ John Conway came up with the following rules.
 
 <HorizontalCenter justify="space-around">
   <div>
-    <Grid
-      size={60}
-      specialCells={[[1, 1]]}
-      world={[[0, 0, 1], [0, 1, 0], [1, 0, 0]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[0, 0, 1], [0, 1, 0], [1, 0, 0]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid size={60} specialCells={[[1, 1]]} {...worldAndHandlers} />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
 
   </div>
   <div>
-    <Grid
-      size={60}
-      specialCells={[[1, 1]]}
-      world={[[1, 0, 0], [0, 1, 0], [1, 0, 1]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[1, 0, 0], [0, 1, 0], [1, 0, 1]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid size={60} specialCells={[[1, 1]]} {...worldAndHandlers} />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
   </div>
 </HorizontalCenter>
 
@@ -140,22 +142,25 @@ John Conway came up with the following rules.
 
 <HorizontalCenter justify="space-around">
   <div>
-    <Grid
-      size={60}
-      specialCells={[[1, 1]]}
-      willDie
-      world={[[1, 1, 0], [0, 1, 0], [1, 0, 1]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[1, 1, 0], [0, 1, 0], [1, 0, 1]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid size={60} specialCells={[[1, 1]]} willDie {...worldAndHandlers} />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
   </div>
   <div>
-    <Grid
-      size={60}
-      specialCells={[[1, 0], [1, 1]]}
-      willDie
-      world={[[1, 1, 0], [1, 1, 0], [1, 1, 0]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[1, 1, 0], [1, 1, 0], [1, 1, 0]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid
+          size={60}
+          specialCells={[[1, 0], [1, 1]]}
+          willDie
+          {...worldAndHandlers}
+        />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
   </div>
 </HorizontalCenter>
 
@@ -163,20 +168,24 @@ John Conway came up with the following rules.
 
 <HorizontalCenter justify="space-around">
   <div>
-    <Grid
-      size={60}
-      specialCells={[[1, 1]]}
-      world={[[0, 1, 0], [0, 0, 1], [0, 0, 1]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[0, 1, 0], [0, 0, 1], [0, 0, 1]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid size={60} specialCells={[[1, 1]]} {...worldAndHandlers} />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
   </div>
   <div>
-    <Grid
-      size={60}
-      specialCells={[[0, 1], [1, 0], [1, 2], [2, 1]]}
-      world={[[1, 0, 1], [0, 1, 0], [1, 0, 1]]}
-    />
-    <p style={{ fontSize: 14 }}>(^^ hover ^^)</p>
+    <NextWorld world={[[1, 0, 1], [0, 1, 0], [1, 0, 1]]}>
+      {({ ...worldAndHandlers }) => (
+        <Grid
+          size={60}
+          specialCells={[[0, 1], [1, 0], [1, 2], [2, 1]]}
+          {...worldAndHandlers}
+        />
+      )}
+    </NextWorld>
+    <Finger>👆</Finger>
   </div>
 </HorizontalCenter>
 

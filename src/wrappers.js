@@ -17,3 +17,9 @@ export let HorizontalCenter = styled.div`
   display: flex;
   justify-content: ${props => props.justify || "center"};
 `
+
+export let Finger = styled.span`
+  position: relative;
+  top: 5px;
+  font-size: 28px;
+`

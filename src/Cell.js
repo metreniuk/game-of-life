@@ -8,16 +8,30 @@ let Box = styled.div`
   background: ${props => (props.alive ? "#006ec8" : "#fff")};
   fill: ${props => (props.alive ? "#fff" : "#006ec8")};
   border: ${props => (props.special ? "medium" : "thin")} solid
-    ${props => (props.special ? "red" : "#006ec8")};
+    ${props =>
+      props.special ? (props.willDie ? "#DE2D32" : "#38C173") : "#006ec8"};
 
   /* hack for centering the inner svg */
   font-family: "sans serif";
 `
 // TODO make animation when the cell disappears
 // TODO make the cell follow the mouse
-export let Cell = ({ alive, size, special = false, onClick }) => {
+// TODO make green or red border on special
+export let Cell = ({
+  alive,
+  size,
+  special = false,
+  willDie = false,
+  onClick,
+}) => {
   return (
-    <Box alive={alive} size={size} special={special} onClick={onClick}>
+    <Box
+      alive={alive}
+      size={size}
+      special={special}
+      willDie={willDie}
+      onClick={onClick}
+    >
       {alive ? <LivingSvg /> : <DeadSvg />}
     </Box>
   )

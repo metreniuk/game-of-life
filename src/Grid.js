@@ -14,7 +14,13 @@ export class Grid extends React.Component {
   state = { showNext: false }
 
   render() {
-    const { world, size, specialCells = [], onClick = noop } = this.props
+    const {
+      world,
+      size,
+      specialCells = [],
+      willDie = false,
+      onClick = noop,
+    } = this.props
 
     const currentWorld = this.state.showNext ? worldNextState(world) : world
 
@@ -36,6 +42,7 @@ export class Grid extends React.Component {
                   key={y}
                   size={size}
                   special={special}
+                  willDie={willDie}
                   onClick={() => onClick({ x, y })}
                 />
               )

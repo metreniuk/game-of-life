@@ -45,7 +45,7 @@ let Intro = () => (
       <Of>of</Of>
       <Life>Life</Life>
       {/* <Button href="/#1">Play</Button> */}
-      <Caption>(use left/right arrows to navigate)</Caption>
+      <Caption>{`<- use arrows to navigate ->`}</Caption>
     </Content>
   </React.Fragment>
 )

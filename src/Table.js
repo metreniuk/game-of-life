@@ -33,7 +33,7 @@ class Table extends Component {
 
   play = () => {
     this.clearInterval()
-    this.interval = setInterval(this.nextGeneration, 700)
+    this.interval = setInterval(this.nextGeneration, 500)
   }
 
   reset = () => {

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Cell } from "./Cell"
-import { worldNextState } from "./modules/game-of-life"
+import { worldNextState, mapWorld } from "./modules/game-of-life"
 
 let Wrapper = styled.div`
   display: flex;
@@ -24,16 +24,21 @@ export class NextWorld extends React.Component {
   }
 }
 
-export class Grid extends React.Component {
-  state = { showNext: false }
+export class Grid extends React.PureComponent {
+  static defaultProps = {
+    specialCells: [],
+  }
+  state = {
+    showNext: false,
+  }
 
   render() {
     const {
       world,
       size,
-      specialCells = [],
+      specialCells,
       willDie = false,
-      onClick = noop,
+      cellHandlers,
       ...rest
     } = this.props
 
@@ -53,7 +58,7 @@ export class Grid extends React.Component {
                   size={size}
                   special={special}
                   willDie={willDie}
-                  onClick={() => onClick({ x, y })}
+                  {...cellHandlers && cellHandlers[x][y]}
                 />
               )
             })}

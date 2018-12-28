@@ -39,7 +39,7 @@ let Caption = styled.p`
 
 let Intro = () => (
   <React.Fragment>
-    <CanvasWorld />
+    {/* <CanvasWorld /> */}
     <Content>
       <Game>Game</Game>
       <Of>of</Of>

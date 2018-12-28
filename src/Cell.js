@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 
 let Box = styled.div`
@@ -17,25 +17,21 @@ let Box = styled.div`
 // TODO make animation when the cell disappears
 // TODO make the cell follow the mouse
 // TODO make green or red border on special
-export let Cell = ({
-  alive,
-  size,
-  special = false,
-  willDie = false,
-  onClick,
-}) => {
-  return (
-    <Box
-      alive={alive}
-      size={size}
-      special={special}
-      willDie={willDie}
-      onClick={onClick}
-    >
-      {alive ? <LivingSvg /> : <DeadSvg />}
-    </Box>
-  )
-}
+export let Cell = memo(
+  ({ alive, size, special = false, willDie = false, ...rest }) => {
+    return (
+      <Box
+        {...rest}
+        alive={alive}
+        size={size}
+        special={special}
+        willDie={willDie}
+      >
+        {alive ? <LivingSvg /> : <DeadSvg />}
+      </Box>
+    )
+  }
+)
 
 let LivingSvg = () => (
   <svg x="0px" y="0px" viewBox="0 0 1000 1000">

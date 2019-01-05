@@ -191,6 +191,18 @@ John Conway came up with the following rules.
 
 ---
 
+These rules are trying to achieve balance in the life of the _cellular automata_ by following the [initial requirements](/#5):
+
+- The fact that a cell can die surrounded by a certain number of neighbors assures that the world will not have an explosive growth.
+- The rules have the potential to generate some unpredictable outcomes (you will see different sort of things that can be achieved in the "game of life").
+- The rules are quite simple.
+
+  A careful reader can see that I didn't mention the _universal constructor_. This is on purpose, we will get there at the end of the road, I promise.
+
+  Alright! We have four simple rules, a bunch of cells and our imagination! Take some time to play with a small group of cells (if you want to skip, feel free to discover more interesting stuff).
+
+---
+
 import { Table } from "./Table"
 
 <Table rows={11} cols={11} cellSize={44} />

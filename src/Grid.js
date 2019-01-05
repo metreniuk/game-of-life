@@ -24,6 +24,31 @@ export class NextWorld extends React.Component {
   }
 }
 
+export class LivingWorld extends React.Component {
+  static defaultProps = {
+    interval: 500,
+  }
+  state = { world: this.props.world }
+  timerId = null
+
+  next = () => this.setState(({ world }) => ({ world: worldNextState(world) }))
+
+  componentDidMount() {
+    this.timerId = setInterval(this.next, this.props.interval)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerId)
+  }
+
+  render() {
+    const { children } = this.props
+    const { world } = this.state
+
+    return children({ world })
+  }
+}
+
 export class Grid extends React.PureComponent {
   static defaultProps = {
     specialCells: [],

@@ -206,3 +206,23 @@ These rules are trying to achieve balance in the life of the _cellular automata_
 import { Table } from "./Table"
 
 <Table rows={11} cols={11} cellSize={44} />
+
+---
+
+import { LivingWorld } from "./Grid"
+
+A world that has only cells is not enough. We need a more sophisticated form of life.
+If you "played" enough time with the game of life you can discover interesting shapes that come up again and again.
+If not, let me show. Let's try this shape together.
+
+<HorizontalCenter>
+  <LivingWorld world={[[0, 1, 0], [0, 1, 0], [0, 1, 0]]}>
+    {({ world }) => <Grid size={60} world={world} />}
+  </LivingWorld>
+</HorizontalCenter>
+
+If by _chance_ the cells are getting this shape they will forever be stuck in this behavior.
+This kind of behaviors we can call _patterns_ or _organisms_.
+This specific one is called a "blinker" (guess why).
+There are more patterns that you will encounter while _playing life_.
+Here are a few more.

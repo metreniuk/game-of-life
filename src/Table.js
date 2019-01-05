@@ -20,6 +20,7 @@ class Table extends Component {
   static defaultProps = {
     rows: 8,
     cols: 8,
+    speed: 500,
   }
 
   handleCellMouseDown = cell => {
@@ -53,7 +54,7 @@ class Table extends Component {
         ),
       makeWorld(this.props.rows, this.props.cols)
     ),
-    speed: 500,
+    speed: this.props.speed,
   }
 
   setWorld = fn => this.setState(({ world }) => ({ world: fn(world) }))
@@ -94,9 +95,10 @@ class Table extends Component {
   pause = () => this.clearInterval()
 
   reset = () => {
-    const { rows, cols } = this.props
+    const { rows, cols, speed } = this.props
     this.setWorld(() => makeWorld(rows, cols))
     this.clearInterval()
+    this.setState({ speed })
   }
 
   handleGridLeave = () => this.setState({ isDrawing: false })

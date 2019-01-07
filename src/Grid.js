@@ -26,19 +26,33 @@ export class NextWorld extends React.Component {
 
 export class LivingWorld extends React.Component {
   static defaultProps = {
-    interval: 500,
+    speed: 500,
+    restartIn: null,
   }
   state = { world: this.props.world }
   timerId = null
+  restartInTimer = null
 
   next = () => this.setState(({ world }) => ({ world: worldNextState(world) }))
 
   componentDidMount() {
-    this.timerId = setInterval(this.next, this.props.interval)
+    const { speed, restartIn, world } = this.props
+    this.timerId = setInterval(this.next, speed)
+
+    if (restartIn) {
+      console.log({ restartIn })
+      this.restartInTimer = setInterval(() => {
+        this.setState({ world }, () => {
+          clearInterval(this.timerId)
+          this.timerId = setInterval(this.next, speed)
+        })
+      }, restartIn)
+    }
   }
 
   componentWillUnmount() {
     clearInterval(this.timerId)
+    clearInterval(this.restartInTimer)
   }
 
   render() {

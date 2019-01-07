@@ -226,3 +226,92 @@ This kind of behaviors we can call _patterns_ or _organisms_.
 This specific one is called a "blinker" (guess why).
 There are more patterns that you will encounter while _playing life_.
 Here are a few more.
+
+---
+
+<HorizontalCenter justify="space-around" style={{ width: "100vw" }}>
+  <HorizontalCenter justify="space-around" style={{ flex: 1 }}>
+    <div>
+      <LivingWorld
+        world={[[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]}
+      >
+        {({ world }) => <Grid size={40} world={world} />}
+      </LivingWorld>
+      <h5>block</h5>
+    </div>
+    <div>
+      <LivingWorld
+        world={[
+          [0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0],
+          [0, 1, 0, 1, 0],
+          [0, 1, 0, 1, 0],
+          [0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0],
+        ]}
+      >
+        {({ world }) => <Grid size={40} world={world} />}
+      </LivingWorld>
+      <h5>beehive</h5>
+    </div>
+  </HorizontalCenter>
+  <HorizontalCenter justify="space-around" style={{ flex: 1 }}>
+    <div>
+      <LivingWorld
+        world={[
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 1, 0, 0, 0],
+          [0, 0, 1, 1, 0, 0],
+          [0, 0, 1, 1, 0, 0],
+          [0, 0, 0, 1, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]}
+      >
+        {({ world }) => <Grid size={40} world={world} />}
+      </LivingWorld>
+      <h5>toad</h5>
+    </div>
+    <div>
+      <LivingWorld
+        world={[
+          [0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 1, 0],
+          [0, 0, 0, 1, 1, 0],
+          [0, 1, 1, 0, 0, 0],
+          [0, 1, 1, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0],
+        ]}
+      >
+        {({ world }) => <Grid size={40} world={world} />}
+      </LivingWorld>
+      <h5>beacon</h5>
+    </div>
+  </HorizontalCenter>
+</HorizontalCenter>
+
+---
+
+<HorizontalCenter>
+  <LivingWorld
+    world={[
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 1, 0, 0, 0, 0, 0],
+      [1, 0, 1, 0, 0, 0, 0, 0],
+      [0, 0, 1, 0, 0, 0, 0, 0],
+    ]}
+    restartIn={8000}
+    speed={300}
+  >
+    {({ world }) => <Grid size={40} world={world} />}
+  </LivingWorld>
+</HorizontalCenter>
+
+These patterns seem interesting but they lack some _real_ life. We need some movement.
+We need some _life_! Let me introduce you...(drum roll) the **glider**!
+How is the glider different from the blinker or the toad?
+The glider is a curious fella! He traverses the world looking for adventures,
+until encounters other cells that could hurt him.

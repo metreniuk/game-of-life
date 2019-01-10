@@ -40,7 +40,6 @@ export class LivingWorld extends React.Component {
     this.timerId = setInterval(this.next, speed)
 
     if (restartIn) {
-      console.log({ restartIn })
       this.restartInTimer = setInterval(() => {
         this.setState({ world }, () => {
           clearInterval(this.timerId)

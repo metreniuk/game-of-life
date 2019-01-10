@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { Grid } from "./Grid"
 import { makeWorld, mapWorld, worldNextState } from "./modules/game-of-life"
 
@@ -17,10 +17,16 @@ const handlersWithCell = ({ x, y }, cellHandlers) =>
 // TODO counter of generations (without repetitions)
 // TODO slider (with accelerating the speed on edges) for time-traveling
 class Table extends Component {
+  static modes = {
+    default: "default",
+    creator: "creator",
+  }
+
   static defaultProps = {
     rows: 8,
     cols: 8,
     speed: 500,
+    mode: "default",
   }
 
   handleCellMouseDown = cell => {
@@ -110,9 +116,43 @@ class Table extends Component {
   handleSpeedChange = e =>
     this.setState({ speed: this.speedFromValue(e.target.value) }, this.play())
 
+  copyWorld = () =>
+    navigator.permissions
+      .query({ name: "clipboard-write" })
+      .then(({ state }) => {
+        if (["prompt", "granted"].includes(state)) {
+          console.log("clipboard-write persmission is granted")
+          return
+        }
+        throw new Error("permission not granted")
+      })
+      .then(() =>
+        navigator.clipboard.writeText(JSON.stringify(this.state.world))
+      )
+      .then(() => console.log("Successfully wrote to the clipboard"))
+      .catch(err => console.log(`Failed to write to clipboard: ${err}.`))
+
+  pasteWorld = () =>
+    navigator.permissions
+      .query({ name: "clipboard-read" })
+      .then(({ state }) => {
+        if (["prompt", "granted"].includes(state)) {
+          console.log("clipboard-read persmission is granted")
+          return
+        }
+        throw new Error("permission not granted")
+      })
+      .then(() => navigator.clipboard.readText())
+      .then(JSON.parse)
+      .then(world => {
+        console.log(world)
+        this.setState({ world })
+      })
+      .catch(err => console.log(`Failed to write to clipboard: ${err}.`))
+
   render() {
     const { world } = this.state
-    const { cellSize } = this.props
+    const { cellSize, mode } = this.props
 
     return (
       <div>
@@ -132,6 +172,12 @@ class Table extends Component {
           onMouseLeave={this.handleGridLeave}
           cellHandlers={this.state.cellHandlers}
         />
+        {mode === "creator" && (
+          <Fragment>
+            <button onClick={this.copyWorld}>copy</button>
+            <button onClick={this.pasteWorld}>paste</button>
+          </Fragment>
+        )}
         <button onClick={this.nextGeneration}>next generation</button>
         <button onClick={this.play}>play</button>
         <button onClick={this.pause}>pause</button>

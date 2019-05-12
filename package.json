@@ -16,7 +16,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mdx": "mdx-deck src/deck.mdx"
+    "mdx": "mdx-deck src/deck.mdx",
+    "pg": "mdx-deck src/pg.mdx"
   },
   "eslintConfig": {
     "extends": "react-app"

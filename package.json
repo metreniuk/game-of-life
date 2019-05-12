@@ -17,7 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "mdx": "mdx-deck src/deck.mdx",
-    "pg": "mdx-deck src/pg.mdx"
+    "pg": "mdx-deck src/pg.mdx",
+    "prettify": "prettier --write src/**/*.{js,mdx}"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "mdx-deck": "^1.7.7"
+    "mdx-deck": "^1.7.7",
+    "prettier": "^1.17.0"
   }
 }

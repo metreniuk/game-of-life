@@ -1,14 +1,14 @@
-import Intro from "./Intro";
-import { Setup } from "./Setup";
-export { default as theme } from "./theme";
+import Intro from "./Intro"
+import { Setup } from "./Setup"
+export { default as theme } from "./theme"
 
 <Intro />
 <Setup />
 
 ---
 
-import { TextWrapper, CanvasWrapper } from "./wrappers";
-import { CanvasWorld } from "./CanvasWorld";
+import { TextWrapper, CanvasWrapper } from "./wrappers"
+import { CanvasWorld } from "./CanvasWorld"
 
 <TextWrapper>
 
@@ -44,8 +44,8 @@ were interested in, they discovered a whole new field in mathematics called **ce
 
 ---
 
-import { Cell } from "./Cell";
-import { HorizontalCenter, Finger } from "./wrappers";
+import { Cell } from "./Cell"
+import { HorizontalCenter, Finger } from "./wrappers"
 
 **Cellular automata** is basically a grid of _cells_ that can be
 in different states, for example, _on_ or _off_.
@@ -72,7 +72,7 @@ Inspired by this idea, in 1968 John Conway began to experiment with defining som
 
 ---
 
-import { Grid, NextWorld } from "./Grid";
+import { Grid, NextWorld } from "./Grid"
 
 Let's discover what rules Conway formalized trying to create the life from scratch.
 But first, we will define some concepts that will help us move forward.
@@ -203,13 +203,13 @@ These rules are trying to achieve balance in the life of the _cellular automata_
 
 ---
 
-import { Table } from "./Table";
+import { Table } from "./Table"
 
 <Table rows={11} cols={11} cellSize={44} />
 
 ---
 
-import { LivingWorld } from "./Grid";
+import { LivingWorld } from "./Grid"
 
 A world that has only cells is not enough. We need a more sophisticated form of life.
 If you "played" enough time with the game of life you can discover interesting shapes that come up again and again.
@@ -247,7 +247,7 @@ Here are a few more.
           [0, 1, 0, 1, 0],
           [0, 1, 0, 1, 0],
           [0, 0, 1, 0, 0],
-          [0, 0, 0, 0, 0]
+          [0, 0, 0, 0, 0],
         ]}
       >
         {({ world }) => <Grid size={40} world={world} />}
@@ -264,7 +264,7 @@ Here are a few more.
           [0, 0, 1, 1, 0, 0],
           [0, 0, 1, 1, 0, 0],
           [0, 0, 0, 1, 0, 0],
-          [0, 0, 0, 0, 0, 0]
+          [0, 0, 0, 0, 0, 0],
         ]}
       >
         {({ world }) => <Grid size={40} world={world} />}
@@ -279,7 +279,7 @@ Here are a few more.
           [0, 0, 0, 1, 1, 0],
           [0, 1, 1, 0, 0, 0],
           [0, 1, 1, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0]
+          [0, 0, 0, 0, 0, 0],
         ]}
       >
         {({ world }) => <Grid size={40} world={world} />}
@@ -301,7 +301,7 @@ Here are a few more.
       [0, 0, 0, 0, 0, 0, 0, 0],
       [0, 1, 1, 0, 0, 0, 0, 0],
       [1, 0, 1, 0, 0, 0, 0, 0],
-      [0, 0, 1, 0, 0, 0, 0, 0]
+      [0, 0, 1, 0, 0, 0, 0, 0],
     ]}
     restartIn={8000}
     speed={300}

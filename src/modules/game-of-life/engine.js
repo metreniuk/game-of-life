@@ -22,9 +22,7 @@ let neighborsSum = (
       sum += world[i][j]
     }
   }
-  if (Number.isNaN(sum)) {
-    console.log({ world, x, y, sum })
-  }
+  
   return sum
 }
 

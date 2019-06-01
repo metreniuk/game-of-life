@@ -10,7 +10,7 @@ let Canvas = styled.canvas`
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.1;
+  opacity: 0.8;
 `
 
 class Modal extends React.Component {
@@ -44,13 +44,13 @@ class CanvasWorld extends Component {
   paint() {
     if (this.canvas.current) {
       let { innerWidth, innerHeight } = window
-      let cellSize = 10
+      let cellSize = 6
       let width = Math.round(innerWidth / cellSize)
       let height = Math.round(innerHeight / cellSize)
       let world = makeRandomWorld(width, height)
 
       const { paint } = makePainter(this.canvas.current)
-      this.stopTimer = paint(world, cellSize, 500)
+      this.stopTimer = paint(world, cellSize, 200)
     }
   }
 

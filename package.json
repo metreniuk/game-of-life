@@ -16,8 +16,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mdx": "mdx-deck src/deck.mdx",
-    "playground": "mdx-deck src/playground.mdx",
+    "mdx": "mdx-deck src/decks/deck.mdx",
+    "playground": "mdx-deck src/decks/playground.mdx",
+    "canvas": "mdx-deck src/decks/canvas.mdx",
     "prettify": "prettier --write src/**/*.{js,mdx}"
   },
   "eslintConfig": {

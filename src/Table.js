@@ -145,7 +145,6 @@ class Table extends Component {
       .then(() => navigator.clipboard.readText())
       .then(JSON.parse)
       .then(world => {
-        console.log(world)
         this.setState({ world })
       })
       .catch(err => console.log(`Failed to write to clipboard: ${err}.`))

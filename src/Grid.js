@@ -1,14 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 import { Cell } from "./Cell"
-import { worldNextState, mapWorld } from "./modules/game-of-life"
+import { worldNextState } from "./modules/game-of-life"
 
 let Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 1080px;
+  min-height: 500px;
 `
-
-let noop = () => {}
 
 export class NextWorld extends React.Component {
   state = { showNext: false }

@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "mdx": "mdx-deck src/deck.mdx",
-    "pg": "mdx-deck src/pg.mdx",
+    "playground": "mdx-deck src/playground.mdx",
     "prettify": "prettier --write src/**/*.{js,mdx}"
   },
   "eslintConfig": {

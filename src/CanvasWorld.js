@@ -26,7 +26,6 @@ class Modal extends React.Component {
 }
 
 // TODO clear animation on resize
-// TODO Move the scripting to a web worker???
 class CanvasWorld extends Component {
   constructor() {
     super()
@@ -36,18 +35,11 @@ class CanvasWorld extends Component {
     this.height = window.innerHeight
     this.stopTimer = null
     this.paint = throttle(this.paint.bind(this), 2000)
-    // this.handleResize = this.handleResize.bind(this)
   }
 
   componentDidMount() {
     this.paint()
-
-    // window.addEventListener("resize", this.handleResize)
   }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.handleResize)
-  // }
 
   paint() {
     if (this.canvas.current) {
@@ -61,14 +53,6 @@ class CanvasWorld extends Component {
       this.stopTimer = paint(world, cellSize, 500)
     }
   }
-
-  // handleResize() {
-  //   if (this.stopTimer) {
-  //     this.stopTimer()
-  //   }
-
-  //   this.paint()
-  // }
 
   render() {
     return (

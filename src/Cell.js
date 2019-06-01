@@ -14,9 +14,9 @@ let Box = styled.div`
   /* hack for centering the inner svg */
   font-family: "sans serif";
 `
+
 // TODO make animation when the cell disappears
 // TODO make the cell follow the mouse
-// TODO make green or red border on special
 export let Cell = memo(
   ({ alive, size, special = false, willDie = false, ...rest }) => {
     return (
@@ -36,7 +36,6 @@ export let Cell = memo(
 let LivingSvg = () => (
   <svg x="0px" y="0px" viewBox="0 0 1000 1000">
     <g>
-      {/* <path d="M933.33,66.67v866.67H66.67V66.67H933.33 M1000,0H0v1000h1000V0L1000,0z" /> */}
       <g>
         <g>
           <g>
@@ -105,7 +104,6 @@ let LivingSvg = () => (
 let DeadSvg = () => (
   <svg x="0px" y="0px" viewBox="0 0 1000 1000">
     <g>
-      {/* <path d="M933.33,66.67v866.67H66.67V66.67H933.33 M1000,0H0v1000h1000V0L1000,0z" /> */}
       <g>
         <g>
           <g>

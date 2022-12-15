@@ -4,6 +4,7 @@ This is an explorable explanation (in progress) about the Conway's Game of Life.
 
 1. To see the canvas version of the game run `npm run canvas`.
 1. To see the interactive versrion of the game run `npm run playground`.
+1. To see the **explorable explanation** run `npm run mdx`.
 
 The interactive version supports some of the following features:
 
